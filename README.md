@@ -74,7 +74,6 @@
 | card_number    | integer  | null : false |
 | month_deadline | datetime | null : false |
 | year_deadline  | datetime | null : false |
-| day_deadline   | datetime | null : false |
 | security_cord  | integer  | null : false |    
 
 ### association
