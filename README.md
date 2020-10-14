@@ -17,6 +17,7 @@
 
 - has_many :products
 - has_many :comments 
+- has_many :purchasedproducts
 - belongs_to :shipping
 - belongs_to :purchaser
 
@@ -37,6 +38,7 @@
 ### association
 
 - has_many :comments
+- has_many :purchasedproducts
 - belongs_to :user
 - belongs_to :purchaser
 
@@ -55,20 +57,20 @@
 
 ## shippingsテーブル
 
-| column              | type     | options     |
-|---------------------|----------|-------------|
-| postal_cord         | integer  | null: false |
-| shipping_prefecture | integer  | null: false |
-| shipping_city       | string   | null: false |
-| shipping_address    | string   | null: false |
-| shipping_building   | string   |             |
-| phone_number        | string   | null: false |
-
+| column                 | type     | options     |
+|------------------------|----------|-------------|
+| postal_cord_id         | integer  | null: false |
+| shipping_prefecture_id | integer  | null: false |
+| shipping_city          | string   | null: false |
+| shipping_address       | string   | null: false |
+| shipping_building      | string   |             |
+| phone_number           | string   | null: false |
+  
 ### association
 
 - belongs_to :user
 
-## purchasersテーブル
+## purchasedproductsテーブル
 
 | column     | type       | options                        |
 |------------|------------|--------------------------------|
@@ -77,8 +79,8 @@
 
 ### association
 
-- has_many :users
-- has_many :products
+- belongs_to :users
+- belongs_to :products
 
 
 
