@@ -38,7 +38,7 @@
 ### association
 
 - has_many :comments
-- has_many :purchasedproducts
+- belongs_to :purchasedproducts
 - belongs_to :user
 - belongs_to :purchaser
 
