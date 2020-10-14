@@ -56,28 +56,30 @@
 
 ## shippingsテーブル
 
-| column                 | type     | options     |
-|------------------------|----------|-------------|
-| postal_cord            | string   | null: false |
-| shipping_prefecture_id | integer  | null: false |
-| shipping_city          | string   | null: false |
-| shipping_address       | string   | null: false |
-| shipping_building      | string   |             |
-| phone_number           | string   | null: false |
+| column                 | type       | options                        |
+|------------------------|------------|--------------------------------|
+| postal_cord            | string     | null: false                    |
+| shipping_prefecture_id | integer    | null: false                    |
+| shipping_city          | string     | null: false                    |
+| shipping_address       | string     | null: false                    |
+| shipping_building      | string     |                                |
+| phone_number           | string     | null: false                    |
+| purchased_product      | references | null: false, foreign_key: true |
+
    
   
 ### association
 
-- has_one :purchased_product
+- belongs_to :purchased_product
 
 
 ## purchased_productsテーブル
 
 | column      | type       | options                        |
 |-------------|------------|--------------------------------|
-| user_id     | integer    | null: false, foreign_key: true |
-| product_id  | integer    | null: false, foreign_key: true |
-| shipping_id | integer    | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
+| product     | references | null: false, foreign_key: true |
+
 
 ### association
 
