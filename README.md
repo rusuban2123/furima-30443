@@ -17,15 +17,14 @@
 
 - has_many :products
 - has_many :comments 
-- has_many :purchasedproducts
-- belongs_to :shipping
-- belongs_to :purchaser
+- has_many :purchased_products
+
 
 ## productsテーブル
 
 | column             | type       | options                        |
 |--------------------|------------|--------------------------------|
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 | name               | string     | null: false                    |
 | description        | text       | null: false                    |   
 | category_id        | integer    | null: false                    |
@@ -38,17 +37,17 @@
 ### association
 
 - has_many :comments
-- belongs_to :purchasedproducts
+- has one :purchased_product
 - belongs_to :user
-- belongs_to :purchaser
+
 
 ## commentsテーブル
 
 | column     | type       | options                        |
 |------------|------------|--------------------------------|
 | content    | text       | null:false                     |
-| user_id    | references | null: false, foreign_key: true |
-| product_id | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+| product    | references | null: false, foreign_key: true |
 
 ### association
 
@@ -59,28 +58,32 @@
 
 | column                 | type     | options     |
 |------------------------|----------|-------------|
-| postal_cord_id         | integer  | null: false |
+| postal_cord            | string   | null: false |
 | shipping_prefecture_id | integer  | null: false |
 | shipping_city          | string   | null: false |
 | shipping_address       | string   | null: false |
 | shipping_building      | string   |             |
 | phone_number           | string   | null: false |
+   
   
 ### association
 
-- belongs_to :user
+- has_one :purchased_product
 
-## purchasedproductsテーブル
 
-| column     | type       | options                        |
-|------------|------------|--------------------------------|
-| user_id    | references | null: false, foreign_key: true |
-| product_id | references | null: false, foreign_key: true |
+## purchased_productsテーブル
+
+| column      | type       | options                        |
+|-------------|------------|--------------------------------|
+| user_id     | integer    | null: false, foreign_key: true |
+| product_id  | integer    | null: false, foreign_key: true |
+| shipping_id | integer    | null: false, foreign_key: true |
 
 ### association
 
-- belongs_to :users
-- belongs_to :products
+- belongs_to :user
+- has_one :product
+- has_one :shipping
 
 
 
