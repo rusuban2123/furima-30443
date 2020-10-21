@@ -10,7 +10,7 @@ class User < ApplicationRecord
    validates :last_name
    validates :first_kana
    validates :last_kana
-    validates :birthday
+   validates :birthday
  end
 
   validates :email, uniqueness: true
