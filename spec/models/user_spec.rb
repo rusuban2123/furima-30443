@@ -7,15 +7,6 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
   context '新規登録がうまくいくとき' do
     it "それぞれ正しい値ならば登録できる" do
-    # @user.nickname = "testtrue" 
-    # @user.email = "testtrue@test.com" (@を含む)
-    # @user.password = "true0000" (英数混合６文字以上)
-    # @user.password_confirmation = "true0000" (passwordが一致)
-    # @user.last_name = "試験テストてすと"  (全角ひらがなカタカタ漢字)
-    # @user.first_name = "試験テストてすと" (全角ひらがなカタカナ漢字)
-    # @user.first_kana = "テスト" (全角カタカナ)
-    # @user.last_kana = "タロウ"  (全角カタカナ)
-    # @user.birthday =  "1931-01-01"
     expect(@user).to be_valid
   end
 end
