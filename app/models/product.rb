@@ -1,8 +1,17 @@
 class Product < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :state
+  belongs_to_active_hash :load
+  belongs_to_active_hash :shipment_source
+  belongs_to_active_hash :day_to_ship
+
+  
+  
     has_many :comments
     belongs_to :user
     has_one_attached :image
-  
+
   
     with_options presence: true do
     validates :user
@@ -14,6 +23,7 @@ class Product < ApplicationRecord
     validates :shipment_source_id
     validates :day_to_ship_id
     validates :price
+    validates :category_id, numericality: { other_than: 1 } 
   end
 
   validates :price, :numericality => { :greater_than_or_equal_to => 300 }  
