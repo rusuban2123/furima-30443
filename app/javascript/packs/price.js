@@ -5,8 +5,8 @@ window.addEventListener("DOMContentLoaded",(e) => {
 
   price.addEventListener("input", ()=> {
     const inputvalue = document.getElementById("item-price").value
-    tax.innerHTML = (inputvalue * 0.1).toLocaleString();
-    profit.innerHTML = (inputvalue * 0.9).toLocaleString();
+    tax.innerHTML =  Math.floor(inputvalue * 0.1);
+    profit.innerHTML =  Math.floor(inputvalue * 0.9);
   
   })
 })
