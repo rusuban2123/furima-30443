@@ -6,14 +6,11 @@ class Product < ApplicationRecord
   belongs_to_active_hash :shipment_source
   belongs_to_active_hash :day_to_ship
 
-  
-  
-    has_many :comments
-    belongs_to :user
-    has_one_attached :image
+  has_many :comments
+  belongs_to :user
+  has_one_attached :image
 
-  
-    with_options presence: true do
+  with_options presence: true do
     validates :image
     validates :user
     validates :name
@@ -26,8 +23,8 @@ class Product < ApplicationRecord
     validates :price
   end
 
-  validates :price, :numericality => { :greater_than_or_equal_to => 300 }  
-  validates :price, :numericality => { :less_than => 9999999 } 
+  validates :price, numericality: { greater_than_or_equal_to: 300 }
+  validates :price, numericality: { less_than: 9_999_999 }
   validates :price, format: { with: /\A[0-9]+\z/ }
-  validates :description, length: {maximum: 1000}
+  validates :description, length: { maximum: 1000 }
 end
