@@ -23,7 +23,6 @@ class Product < ApplicationRecord
     validates :shipment_source_id
     validates :day_to_ship_id
     validates :price
-    validates :category_id, numericality: { other_than: 1 } 
   end
 
   validates :price, :numericality => { :greater_than_or_equal_to => 300 }  
