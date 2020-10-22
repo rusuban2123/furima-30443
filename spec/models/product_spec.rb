@@ -15,7 +15,7 @@ RSpec.describe Product, type: :model do
       @product.valid?
       expect(@product.errors.full_messages).to include("Name can't be blank")
     end
-    it "商品名が40字以上だと歩人できない" do
+    it "商品名が40字以上だと保存できない" do
       @product.name = 'a' * 41
       @product.valid?
       expect(@product.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
