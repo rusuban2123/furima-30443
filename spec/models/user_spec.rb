@@ -18,7 +18,7 @@ context '新規登録がうまくいかないとき' do
     end
     it "emailが空では登録できない" do
       @user.email = ""
-      @user.valid?
+      expect(@user.errors.full_messages).to include("Email can't be blank")
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
     it "emailが重複していると登録できない" do

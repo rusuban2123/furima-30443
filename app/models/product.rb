@@ -14,6 +14,7 @@ class Product < ApplicationRecord
 
   
     with_options presence: true do
+    validates :image
     validates :user
     validates :name
     validates :description
@@ -28,4 +29,5 @@ class Product < ApplicationRecord
   validates :price, :numericality => { :greater_than_or_equal_to => 300 }  
   validates :price, :numericality => { :less_than => 9999999 } 
   validates :price, format: { with: /\A[0-9]+\z/ }
+  validates :description, length: {maximum: 1000}
 end
