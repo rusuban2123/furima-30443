@@ -27,4 +27,5 @@ class Product < ApplicationRecord
   validates :price, numericality: { less_than: 9_999_999 }
   validates :price, format: { with: /\A[0-9]+\z/ }
   validates :description, length: { maximum: 1000 }
+  validates :name, length: { maximum: 40 }
 end
