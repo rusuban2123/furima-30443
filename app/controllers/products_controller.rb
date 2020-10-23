@@ -32,6 +32,15 @@ class ProductsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def destroy
+    if @product.destroy
+     redirect_to root_path
+    else
+     render 'show'
+    end
+   end
+ 
 
   private
 
