@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index,{only: [:edit,:update,:destroy]}
+  before_action :move_to_index,{only: [:edit, :update, :destroy]}
+  before_action :find_params,{only: [:edit, :update, :show]}
   def index
     @products = Product.order("created_at DESC")
   end
@@ -19,15 +20,12 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to root_path
     else
@@ -44,6 +42,11 @@ class ProductsController < ApplicationController
       :day_to_ship_id, :price
     ).merge(user_id: current_user.id)
   end
+
+  def find_params
+    @product = Product.find(params[:id])
+  end
+
 
   def move_to_index
     @product = Product.find(params[:id])
