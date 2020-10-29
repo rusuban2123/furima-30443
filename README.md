@@ -17,7 +17,7 @@
 
 - has_many :products
 - has_many :comments 
-- has_many :purchased_products
+- has_many :order
 
 
 ## productsテーブル
@@ -37,7 +37,7 @@
 ### association
 
 - has_many :comments
-- has one :purchased_product
+- has one :order
 - belongs_to :user
 
 
@@ -64,16 +64,16 @@
 | shipping_address       | string     | null: false                    |
 | shipping_building      | string     |                                |
 | phone_number           | string     | null: false                    |
-| purchased_product      | references | null: false, foreign_key: true |
+| order                  | references | null: false, foreign_key: true |
 
    
   
 ### association
 
-- belongs_to :purchased_product
+- belongs_to :order
 
 
-## purchased_productsテーブル
+## orderテーブル
 
 | column      | type       | options                        |
 |-------------|------------|--------------------------------|
