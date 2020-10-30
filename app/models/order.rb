@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :product
   has_one :shipping
+  belongs_to :user
+  has_one :product
+
 end

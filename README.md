@@ -59,7 +59,7 @@
 | column                 | type       | options                        |
 |------------------------|------------|--------------------------------|
 | postal_cord            | string     | null: false                    |
-| shipping_prefecture_id | integer    | null: false                    |
+| shipment_source_id     | integer    | null: false                    |
 | shipping_city          | string     | null: false                    |
 | shipping_address       | string     | null: false                    |
 | shipping_building      | string     |                                |
