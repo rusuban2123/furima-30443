@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :set_product, only: [:index, :create]
-  
+  before_action :authenticate_user!, only: [:index]
+  before_action :move_to_index, only: [:index, :create]
+ 
   def index
     @order_shipping = OrderShipping.new
   end
@@ -23,6 +25,7 @@ class OrdersController < ApplicationController
     @product = Product.find(params[:product_id])
   end
 
+
   def shipping_params
     params.require(:order_shipping).permit(:postal_code, :shipment_source_id, :shipping_city, :shipping_address,:shipping_building, :phone_number, :product_id).merge(token: params[:token], user_id: current_user.id, product_id: @product.id)
   end
@@ -36,7 +39,15 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
-
+ 
+  def move_to_index
+    if user_signed_in? && current_user.id == @product.user_id
+      redirect_to root_path
+    elsif @product.order != nil
+      redirect_to root_path
+    end
+  end
+  
 
 end
 
