@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index,{only: [:edit, :update, :destroy]}
-  before_action :find_params,{only: [:edit, :update, :show]}
+  before_action :move_to_index, { only: [:edit, :update, :destroy] }
+  before_action :find_params, { only: [:edit, :update, :show] }
   def index
     @products = Product.order("created_at DESC")
   end
@@ -19,11 +19,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @product.update(product_params)
@@ -32,15 +30,14 @@ class ProductsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     if @product.destroy
-     redirect_to root_path
+      redirect_to root_path
     else
-     render 'show'
+      render 'show'
     end
-   end
- 
+  end
 
   private
 
@@ -56,11 +53,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-
   def move_to_index
     @product = Product.find(params[:id])
-    unless user_signed_in? && current_user.id == @product.user_id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in? && current_user.id == @product.user_id
   end
 end
