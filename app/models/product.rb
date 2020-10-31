@@ -9,6 +9,7 @@ class Product < ApplicationRecord
   has_many :comments
   belongs_to :user
   has_one_attached :image
+  has_one :order
 
   with_options presence: true do
     validates :image
